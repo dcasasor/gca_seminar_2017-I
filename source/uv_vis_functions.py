@@ -39,7 +39,7 @@ def process_data(raw_data, scaling_factors):
     planck_ct = 1.23984193e3  # eV*nm
 
     Eg_values = planck_ct/wavelength  # matrix operation
-    scaled_tramitance = (tramitance.T*scaling_factors).T  # matrix operation
+    scaled_tramitance = tramitance*scaling_factors  # matrix operation
 
     return Eg_values, scaled_tramitance
 
@@ -68,5 +68,7 @@ def plot_uv_vis(Eg_array, tramitance_array, offset):
 
     # Put minor ticks
     axis.xaxis.set_minor_locator(AutoMinorLocator(2))
+    axis.xaxis.set_ticks_position('bottom')  # xticks only at bottom
+    axis.yaxis.set_ticks('left')  # yticks only at left
 
     return fig, axis
