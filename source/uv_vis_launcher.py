@@ -11,17 +11,25 @@ raw_uv_data = np.genfromtxt('../data/uv_vis_data.csv', delimiter=',',
 scaling_fc = (1, 1, 1, 1, 1)
 Eg_data, tramitance_sc = functions.process_data(raw_uv_data, scaling_fc)
 
+# Export data
+np.savetxt('../results/tables/Eg_data.csv', Eg_data, delimiter=',')
+np.savetxt('../results/tables/tramitance_sc.csv', tramitance_sc, delimiter=',')
+
 # --------------- Plot data
-offset = 0.5
+offset = 20
 fig_uv, axis_uv = functions.plot_uv_vis(Eg_data, tramitance_sc, offset)
 
+# Edit axes
 axis_uv.set_title('Example of UV Vis plotting for GCA Seminar')
+axis_uv.set_xlim(xmax=6.2)
+axis_uv.set_ylim(ymax=110)
+axis_uv.yaxis.set_ticks([])  # Remove yticks
 
 # Name the curves
 names_curves = ['Material %i' % ind for ind in range(1, 6)]
-offset_acum = 0
+offset_acum = 1
 for name in names_curves:
-    axis_uv.text(0.8, offset_acum, name)
+    axis_uv.text(1.2, offset_acum, name)
     offset_acum += offset
 
 # Save figure

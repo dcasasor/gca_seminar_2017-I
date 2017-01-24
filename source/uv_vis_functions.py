@@ -69,6 +69,5 @@ def plot_uv_vis(Eg_array, tramitance_array, offset):
     # Put minor ticks
     axis.xaxis.set_minor_locator(AutoMinorLocator(2))
     axis.xaxis.set_ticks_position('bottom')  # xticks only at bottom
-    axis.yaxis.set_ticks('left')  # yticks only at left
 
     return fig, axis
